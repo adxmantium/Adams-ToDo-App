@@ -9,6 +9,10 @@ zenefits.getObject = function(key){
 	return value && JSON.parse(value);
 };
 
+zenefits.clearStorage = function(){
+	localStorage.clear();
+};
+
 var ToDoAppComponent = React.createClass({displayName: "ToDoAppComponent",
 	getInitialState: function(){
 		return {
@@ -20,13 +24,21 @@ var ToDoAppComponent = React.createClass({displayName: "ToDoAppComponent",
 	},
 
 	componentWillMount: function(){
-		if( localStorage.length > 0 ){
-			//set up then next available id
-			this.state.id = ++localStorage.length;
+		var hasZenefits = zenefits.getObject('zenefits');
+
+		//if null, create spot in localstorage for saving user info
+		if( _.isNull(hasZenefits) ){
+			zenefits.saveObject('zenefits', this.state.users);
+		}else{
+			var next_id = hasZenefits.length;
+			
 			//loop through storage to save existing users to array
-			for( var i = 1; i <= localStorage.length; i++){
-				this.state.users.push( zenefits.getObject(i) );
+			for( var i = 0; i < hasZenefits.length; i++){
+				this.state.users.push( hasZenefits[i] );
 			}
+
+			// set up then next available id
+			this.state.id = ++next_id;
 		}
 	},
 
@@ -52,8 +64,8 @@ var ToDoAppComponent = React.createClass({displayName: "ToDoAppComponent",
 
 		//add to users array
 		this.state.users.push(newUser);
-		//save to localstorage
-		zenefits.saveObject(newUser.id, newUser);
+		//save to localStorage
+		this.saveChanges();
 		//set active user
 		this.setActiveUser(newUser);
 		//increment id
@@ -69,6 +81,10 @@ var ToDoAppComponent = React.createClass({displayName: "ToDoAppComponent",
 	logout: function(){
 		this.setState({showIntro: true});
 	},
+	saveChanges: function(){
+		//save to localstorage
+		zenefits.saveObject('zenefits', this.state.users);
+	},
 
 	//render
 	render: function(){
@@ -77,7 +93,7 @@ var ToDoAppComponent = React.createClass({displayName: "ToDoAppComponent",
 				 
 					this.state.showIntro ? 
 					React.createElement(Intro_Component, {users: this.state.users, toggleViews_function: this.toggleViews, existingToActiveUser_function: this.existingToActiveUser}) : 
-					React.createElement(List_Component, {user: this.state.activeUser, logout_function: this.logout})
+					React.createElement(List_Component, {user: this.state.activeUser, saveChanges_function: this.saveChanges, logout_function: this.logout})
 				
 			)
 		);
@@ -89,6 +105,10 @@ var Intro_Component = React.createClass({displayName: "Intro_Component",
 		return {
 			users: this.props.users,
 		};
+	},
+
+	componentWillMount: function(){
+		// console.log(this.props.users);
 	},
 
 	render: function(){
@@ -111,8 +131,8 @@ var Intro_Component = React.createClass({displayName: "Intro_Component",
 				React.createElement("div", {className: "existing-users-container text-left"}, 
 					React.createElement("div", null, "Already created a list?"), 
 					
-						this.state.users.length > 0 ?
-						this.state.users.map(function(user){
+						_this.state.users.length > 0 ?
+						_this.state.users.map(function(user){
 							return React.createElement(ExistingUsers_Component, {key: user.id, user: user, existingToActiveUser_function: _this.props.existingToActiveUser_function})
 						}) :
 						React.createElement("div", null, React.createElement("small", null, "No existing lists"))
@@ -232,6 +252,7 @@ var List_Component = React.createClass({displayName: "List_Component",
 	},
 	permanentlyDeleteTask: function(task){
 		this.state.tasks = _.reject(this.state.tasks, {id: task.id});
+		this.state.user.tasks = this.state.tasks;
 		this.saveAndRerender();
 	},
 	sortByPriority:function(tasks){
@@ -252,14 +273,12 @@ var List_Component = React.createClass({displayName: "List_Component",
 		return this.sortByPriority(finished);
 	},
 	saveAndRerender:function(){
-		this.saveChanges();
+		this.props.saveChanges_function();
 		this.setState({tasks: this.state.tasks});
 	},
 
 	//toggle list views
 	toggleCompletedView: function(e){
-		console.log(e.target);
-		console.log(e.currentTarget);
 		if( this.state.showNotcompletedView && e.target.id === 'c-nav' )
 			this.setState({showNotcompletedView: !this.state.showNotcompletedView});
 		else if( !this.state.showNotcompletedView && e.target.id == 'not-c-nav' )
@@ -277,9 +296,9 @@ var List_Component = React.createClass({displayName: "List_Component",
 	},
 
 	//save this user's info to local storage
-	saveChanges: function(){
-		zenefits.saveObject(this.state.user.id, this.state.user);
-	},
+	// saveChanges: function(){
+	// 	zenefits.saveObject(this.state.user.id, this.state.user);
+	// },
 
 	//num of complete/incomplete
 
@@ -328,7 +347,7 @@ var List_Component = React.createClass({displayName: "List_Component",
 						 
 							!emptyList ? 
 							unfinished.map(function(task) {
-								return React.createElement(Task_Component, {key: task.id, task: task, saveAndRerender_function: _this.saveAndRerender, saveChanges_function: _this.saveChanges})
+								return React.createElement(Task_Component, {key: task.id, task: task, saveAndRerender_function: _this.saveAndRerender, saveChanges_function: _this.props.saveChanges_function})
 					        })
 							: React.createElement("div", null, React.createElement("small", null, "This list is empty"))
 						

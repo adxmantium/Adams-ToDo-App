@@ -18,6 +18,10 @@ $darkTextColor: #333;
           border-radius: $radius;
 }
 
+body{
+	background-color: #eee;
+}
+
 body::-webkit-scrollbar{
 	width: 5px;
 }

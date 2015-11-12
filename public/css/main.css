@@ -5821,6 +5821,9 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+body {
+  background-color: #eee; }
+
 body::-webkit-scrollbar {
   width: 5px; }
 

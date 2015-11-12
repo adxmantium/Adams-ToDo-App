@@ -57,5 +57,5 @@ gulp.task('watch', function() {
 });
 
 //this task is the initial task triggered, so put other tasks in here
-gulp.task('default', ['sass-to-css', 'jsx-to-js', 'jshint']);
+gulp.task('default', ['sass-to-css', 'jsx-to-js']);
 
