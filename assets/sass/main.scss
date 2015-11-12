@@ -1,0 +1,265 @@
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+$low: #009900;
+$medium: #e68a00;
+$high: #ff1a1a;
+$darkgray: #797979;
+$optionsborder: rgba(0,0,0,0.15);
+$darkTextColor: #333;
+
+@mixin border-left($color){
+	border-left: 3px solid $color;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+body::-webkit-scrollbar{
+	width: 5px;
+}
+
+body::-webkit-scrollbar::-webkit-scrollbar-button{
+	background-color: $darkgray;	
+	height: 0;
+}
+
+body::-webkit-scrollbar-track{
+	background-color: rgba(0,0,0,0.3);	
+}
+
+body::-webkit-scrollbar-thumb{
+	background-color: rgba(0,0,0,0.4);	
+}
+
+#list-container{
+	background-color: #eee;
+
+	.createList-container{
+		width: 354px;
+		margin: 0 auto 10px;
+
+		form.intro-form{
+			padding: 12px 0 20px;
+			.input-group-addon{
+				padding: 0;
+				border: 0;
+				border-top: 1px solid $darkTextColor;
+				border-bottom: 1px solid $darkTextColor;
+			}
+		}
+
+		input{
+			padding: 7px;
+		}
+
+		button{
+			background-color: $darkTextColor;
+		    border: 2px solid $darkTextColor;
+		    color: #eee;
+		    border-top-right-radius: 2px;
+		    border-bottom-right-radius: 2px;
+		    padding: 7px;
+		}
+	}
+
+	.list-component{
+		width: 354px;
+		margin: 0 auto 10px;
+
+		.list-header{
+			width: 100%;
+			.zenefits-header, .logout{
+				width: 50%;
+				float: left;
+			}
+			.logout{
+				padding: 33px 0 0;
+				cursor: pointer;
+			}
+		}
+
+		.welcome-container{
+			padding-bottom: 12px;
+		}
+
+		input.task-input{
+			width: 100%;
+			padding: 7px;
+		}
+
+		.nav-row{
+			border-bottom: 2px solid $darkTextColor;
+			margin-top: 15px;
+			margin-bottom: 15px;
+
+			a{
+				color: $darkTextColor;
+				cursor: pointer;
+			}
+		}
+
+		.not-c, .is-c{
+			span.num{
+				color: $darkTextColor;
+				font-size: 14px;
+				background-color: #eee;
+				@include border-radius(100px);
+				padding: 2px 6px;
+			}
+		}
+
+		.not-c.active, .is-c.active{
+			background-color: $darkTextColor;	
+			a{
+				color: #eee;
+			}
+			span.num{
+				color: $darkTextColor;
+				font-size: 14px;
+				background-color: #eee;
+				@include border-radius(100px);
+				padding: 2px 6px;
+			}
+		}	
+
+		.task-list-container{
+			margin-bottom: 50px;
+		}
+	}
+
+}/*end of list-container*/
+
+.task-item{
+	margin-bottom: 7px;
+	box-shadow: 1px 2px 1px 1px $optionsborder;
+	background-color: #fff;
+	position: relative;
+	@include border-radius(1px);
+
+	input.edit-field{
+		width: 100%;
+	}
+
+	&.low{
+		@include border-left($low);	
+	}
+
+	&.medium{
+		@include border-left($medium);	
+	}
+
+	&.high{
+		@include border-left($high);
+	}
+
+	.val{
+		padding: 10px;
+		cursor: pointer;
+		font-size: 16px;
+		color: $darkTextColor;
+		box-shadow: 0px 5px 1px -5px rgba(0,0,0,0.9);
+
+		&.complete{
+			text-decoration: line-through;
+		}
+	}
+
+	.options{
+		cursor: pointer; 
+		padding: 5px 0;
+		font-size: 12px;
+
+		&.priority{
+			text-transform: capitalize;
+
+			&.low{
+				color: $low;
+			}	
+
+			&.medium{
+				color: $medium;
+			}
+
+			&.high{
+				color: $high;
+			}
+		}
+
+		&.done{
+			color: $darkTextColor;
+		    &.emphasize{
+		    	font-weight: 600;
+		    }
+		}
+
+		&.edit{
+			color: $darkgray;
+			&.emphasize{
+		    	font-weight: 600;
+		    }
+		}
+
+	}/* end of .options */
+
+}/* end of .task-item */
+
+
+.existing-users-container{
+
+	.existing-user{
+		margin-bottom: 7px;
+		box-shadow: 1px 2px 1px 1px $optionsborder;
+		background-color: #fff;
+		padding: 5px 0 5px 40px;
+		cursor: pointer;
+		position: relative;
+		border-left: 4px solid $darkTextColor;
+		@include border-radius(1px);
+
+		.user-name{
+			font-size: 18px;
+			font-weight: 600;
+			padding-bottom: 3px;
+		}
+
+		.user-incompleted{
+			font-size: 14px;
+			.highest-priority{
+				&.low{
+					color: $low;
+				}
+				&.medium{
+					color: $medium;
+				}
+				&.high{
+					color: $high;
+				}
+			}
+		}
+
+		.user-completed{
+			color: $darkgray;
+		}
+
+		.arrow{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 85%;
+			right: 0;
+			font-size: 40px;
+			padding-top: 7px;
+		}
+	}
+}
+
+.by-adam-adams{
+	margin-top: 100px;
+	font-weight: 600;
+}
+
+
