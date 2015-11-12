@@ -2,12 +2,12 @@ window.zenefits = {};
 
 zenefits.saveObject = function(key, value){
 	localStorage.setItem(key, JSON.stringify(value));
-}
+};
 
 zenefits.getObject = function(key){
 	var value = localStorage.getItem(key);
 	return value && JSON.parse(value);
-}
+};
 
 var ToDoAppComponent = React.createClass({
 	getInitialState: function(){
@@ -16,7 +16,7 @@ var ToDoAppComponent = React.createClass({
 			id: 1,
 			users: [],
 			activeUser: {},
-		}
+		};
 	},
 
 	componentWillMount: function(){
@@ -88,7 +88,7 @@ var Intro_Component = React.createClass({
 	getInitialState: function(){
 		return {
 			users: this.props.users,
-		}
+		};
 	},
 
 	render: function(){
@@ -134,7 +134,7 @@ var ExistingUsers_Component = React.createClass({
 		return {
 			user: this.props.user,
 			highestPriority: 'none',
-		}
+		};
 	},
 
 	findNumberOfIncompleteTasks: function(){
@@ -196,7 +196,7 @@ var List_Component = React.createClass({
 			showNotcompletedView: true,
 			unfinished_count: 0,
 			finished_count: 0,
-		}
+		};
 	},
 
 	componentWillMount: function(){
@@ -213,7 +213,6 @@ var List_Component = React.createClass({
 		var entered_task = $(e.currentTarget).find('input.task-input');
 		var this_val = entered_task.val();
 		var task_len = this.state.tasks.length;
-		var task = {};
 		var task = {
 			id: ++task_len, 
 			val: this_val,
@@ -356,7 +355,7 @@ var Task_Component = React.createClass({
 		return {
 			this_task: this.props.task,
 			editing_on: false,
-		}
+		};
 	},
 
 	completed: function(){
