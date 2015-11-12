@@ -111,8 +111,8 @@ var Intro_Component = React.createClass({
 				<div className="existing-users-container text-left">
 					<div>Already created a list?</div>
 					{
-						_this.state.users.length > 0 ?
-						_this.state.users.map(function(user){
+						this.state.users.length > 0 ?
+						this.state.users.map(function(user){
 							return <ExistingUsers_Component key={user.id} user={user} existingToActiveUser_function={_this.props.existingToActiveUser_function} />
 						}) :
 						<div><small>No existing lists</small></div>
