@@ -115,7 +115,7 @@ var Intro_Component = React.createClass({
 						_this.state.users.map(function(user){
 							return <ExistingUsers_Component key={user.id} user={user} existingToActiveUser_function={_this.props.existingToActiveUser_function} />
 						}) :
-						null
+						<div><small>No existing lists</small></div>
 					}
 				</div>
 

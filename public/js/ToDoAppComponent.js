@@ -115,7 +115,7 @@ var Intro_Component = React.createClass({displayName: "Intro_Component",
 						_this.state.users.map(function(user){
 							return React.createElement(ExistingUsers_Component, {key: user.id, user: user, existingToActiveUser_function: _this.props.existingToActiveUser_function})
 						}) :
-						null
+						React.createElement("div", null, React.createElement("small", null, "No existing lists"))
 					
 				), 
 
