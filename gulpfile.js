@@ -25,13 +25,13 @@ gulp.task('jsx-to-js', function () {
         .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('to-es6', function () {
-  return gulp.src([
-  			'output/*.js'
-  			])
-        .pipe(babel())
-        .pipe(gulp.dest('output'));
-});
+// gulp.task('to-es6', function () {
+//   return gulp.src([
+//   			'output/*.js'
+//   			])
+//         .pipe(babel())
+//         .pipe(gulp.dest('output'));
+// });
 
 gulp.task("jshint", function() {
     gulp.src("public/js/ToDoAppComponent.js")
