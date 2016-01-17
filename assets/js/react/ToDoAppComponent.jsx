@@ -1,15 +1,15 @@
-window.zenefits = {};
+window.finito = {};
 
-zenefits.saveObject = function(key, value){
+finito.saveObject = function(key, value){
 	localStorage.setItem(key, JSON.stringify(value));
 };
 
-zenefits.getObject = function(key){
+finito.getObject = function(key){
 	var value = localStorage.getItem(key);
 	return value && JSON.parse(value);
 };
 
-zenefits.clearStorage = function(){
+finito.clearStorage = function(){
 	localStorage.clear();
 };
 
@@ -24,17 +24,17 @@ var ToDoAppComponent = React.createClass({
 	},
 
 	componentWillMount: function(){
-		var hasZenefits = zenefits.getObject('zenefits');
+		var hasFinito = finito.getObject('finito');
 
 		//if null, create spot in localstorage for saving user info
-		if( _.isNull(hasZenefits) ){
-			zenefits.saveObject('zenefits', this.state.users);
+		if( _.isNull(hasFinito) ){
+			finito.saveObject('finito', this.state.users);
 		}else{
-			var next_id = hasZenefits.length;
+			var next_id = hasFinito.length;
 			
 			//loop through storage to save existing users to array
-			for( var i = 0; i < hasZenefits.length; i++){
-				this.state.users.push( hasZenefits[i] );
+			for( var i = 0; i < hasFinito.length; i++){
+				this.state.users.push( hasFinito[i] );
 			}
 
 			// set up then next available id
@@ -83,18 +83,22 @@ var ToDoAppComponent = React.createClass({
 	},
 	saveChanges: function(){
 		//save to localstorage
-		zenefits.saveObject('zenefits', this.state.users);
+		finito.saveObject('finito', this.state.users);
 	},
 
 	//render
 	render: function(){
 		return (
 			<div className="container-fluid">
+				<div className="row">
+					<div className="col-xs-12">
 				{ 
 					this.state.showIntro ? 
 					<Intro_Component users={this.state.users} toggleViews_function={this.toggleViews} existingToActiveUser_function={this.existingToActiveUser} /> : 
 					<List_Component user={this.state.activeUser} saveChanges_function={this.saveChanges} logout_function={this.logout} /> 
 				}
+					</div>
+				</div>
 			</div>
 		);
 	}
@@ -117,7 +121,7 @@ var Intro_Component = React.createClass({
 		return (
 			<div className="createList-container">
 				<div className="text-left">
-					<h2>Welcome, to Zenefits <small>ToDo</small>!</h2>
+					<h2>Welcome, to Finito <small>ToDo App</small>!</h2>
 					<div>{directions}</div>
 				</div>
 
@@ -297,7 +301,7 @@ var List_Component = React.createClass({
 
 	//save this user's info to local storage
 	// saveChanges: function(){
-	// 	zenefits.saveObject(this.state.user.id, this.state.user);
+	// 	finito.saveObject(this.state.user.id, this.state.user);
 	// },
 
 	//num of complete/incomplete
@@ -315,8 +319,8 @@ var List_Component = React.createClass({
 		return (
 			<div className="list-component">
 				<div className="list-header clearfix">
-					<div className="zenefits-header">
-						<h2>Zenefits <small>ToDo</small></h2>
+					<div className="finito-header">
+						<h2>Finito <small>ToDo App</small></h2>
 					</div>
 					<div className="logout text-right">
 						<a onClick={this.props.logout_function}>Logout</a>

@@ -1,15 +1,15 @@
-window.zenefits = {};
+window.finito = {};
 
-zenefits.saveObject = function(key, value){
+finito.saveObject = function(key, value){
 	localStorage.setItem(key, JSON.stringify(value));
 };
 
-zenefits.getObject = function(key){
+finito.getObject = function(key){
 	var value = localStorage.getItem(key);
 	return value && JSON.parse(value);
 };
 
-zenefits.clearStorage = function(){
+finito.clearStorage = function(){
 	localStorage.clear();
 };
 
@@ -24,17 +24,17 @@ var ToDoAppComponent = React.createClass({displayName: "ToDoAppComponent",
 	},
 
 	componentWillMount: function(){
-		var hasZenefits = zenefits.getObject('zenefits');
+		var hasFinito = finito.getObject('finito');
 
 		//if null, create spot in localstorage for saving user info
-		if( _.isNull(hasZenefits) ){
-			zenefits.saveObject('zenefits', this.state.users);
+		if( _.isNull(hasFinito) ){
+			finito.saveObject('finito', this.state.users);
 		}else{
-			var next_id = hasZenefits.length;
+			var next_id = hasFinito.length;
 			
 			//loop through storage to save existing users to array
-			for( var i = 0; i < hasZenefits.length; i++){
-				this.state.users.push( hasZenefits[i] );
+			for( var i = 0; i < hasFinito.length; i++){
+				this.state.users.push( hasFinito[i] );
 			}
 
 			// set up then next available id
@@ -83,18 +83,22 @@ var ToDoAppComponent = React.createClass({displayName: "ToDoAppComponent",
 	},
 	saveChanges: function(){
 		//save to localstorage
-		zenefits.saveObject('zenefits', this.state.users);
+		finito.saveObject('finito', this.state.users);
 	},
 
 	//render
 	render: function(){
 		return (
 			React.createElement("div", {className: "container-fluid"}, 
+				React.createElement("div", {className: "row"}, 
+					React.createElement("div", {className: "col-xs-12"}, 
 				 
 					this.state.showIntro ? 
 					React.createElement(Intro_Component, {users: this.state.users, toggleViews_function: this.toggleViews, existingToActiveUser_function: this.existingToActiveUser}) : 
 					React.createElement(List_Component, {user: this.state.activeUser, saveChanges_function: this.saveChanges, logout_function: this.logout})
 				
+					)
+				)
 			)
 		);
 	}
@@ -117,7 +121,7 @@ var Intro_Component = React.createClass({displayName: "Intro_Component",
 		return (
 			React.createElement("div", {className: "createList-container"}, 
 				React.createElement("div", {className: "text-left"}, 
-					React.createElement("h2", null, "Welcome, to Zenefits ", React.createElement("small", null, "ToDo"), "!"), 
+					React.createElement("h2", null, "Welcome, to Finito ", React.createElement("small", null, "ToDo App"), "!"), 
 					React.createElement("div", null, directions)
 				), 
 
@@ -297,7 +301,7 @@ var List_Component = React.createClass({displayName: "List_Component",
 
 	//save this user's info to local storage
 	// saveChanges: function(){
-	// 	zenefits.saveObject(this.state.user.id, this.state.user);
+	// 	finito.saveObject(this.state.user.id, this.state.user);
 	// },
 
 	//num of complete/incomplete
@@ -315,8 +319,8 @@ var List_Component = React.createClass({displayName: "List_Component",
 		return (
 			React.createElement("div", {className: "list-component"}, 
 				React.createElement("div", {className: "list-header clearfix"}, 
-					React.createElement("div", {className: "zenefits-header"}, 
-						React.createElement("h2", null, "Zenefits ", React.createElement("small", null, "ToDo"))
+					React.createElement("div", {className: "finito-header"}, 
+						React.createElement("h2", null, "Finito ", React.createElement("small", null, "ToDo App"))
 					), 
 					React.createElement("div", {className: "logout text-right"}, 
 						React.createElement("a", {onClick: this.props.logout_function}, "Logout")

@@ -5863,7 +5863,7 @@ body::-webkit-scrollbar-thumb {
     margin: 0 auto 10px; }
     #list-container .list-component .list-header {
       width: 100%; }
-      #list-container .list-component .list-header .zenefits-header, #list-container .list-component .list-header .logout {
+      #list-container .list-component .list-header .finito-header, #list-container .list-component .list-header .logout {
         width: 50%;
         float: left; }
       #list-container .list-component .list-header .logout {
