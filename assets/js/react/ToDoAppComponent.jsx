@@ -121,7 +121,8 @@ var Intro_Component = React.createClass({
 		return (
 			<div className="createList-container">
 				<div className="text-left">
-					<h2>Welcome, to Finito <small>ToDo App</small>!</h2>
+					<h2>Welcome, to Finito! <br /><small>Your Friendly To-Do App :)</small></h2>
+					<div></div>
 					<div>{directions}</div>
 				</div>
 

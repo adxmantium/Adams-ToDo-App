@@ -121,7 +121,8 @@ var Intro_Component = React.createClass({displayName: "Intro_Component",
 		return (
 			React.createElement("div", {className: "createList-container"}, 
 				React.createElement("div", {className: "text-left"}, 
-					React.createElement("h2", null, "Welcome, to Finito ", React.createElement("small", null, "ToDo App"), "!"), 
+					React.createElement("h2", null, "Welcome, to Finito! ", React.createElement("br", null), React.createElement("small", null, "Your Friendly To-Do App :)")), 
+					React.createElement("div", null), 
 					React.createElement("div", null, directions)
 				), 
 
