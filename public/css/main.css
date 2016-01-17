@@ -5878,6 +5878,9 @@ body::-webkit-scrollbar-thumb {
       border-bottom: 2px solid #333;
       margin-top: 15px;
       margin-bottom: 15px; }
+      #list-container .list-component .nav-row div.text-center {
+        float: left;
+        width: 50%; }
       #list-container .list-component .nav-row a {
         color: #333;
         cursor: pointer; }

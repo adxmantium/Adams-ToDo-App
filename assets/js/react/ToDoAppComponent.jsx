@@ -290,12 +290,12 @@ var List_Component = React.createClass({
 	},
 
 	getCompListClasses: function(){
-		var classes = 'col-sm-6 text-center not-c';
+		var classes = 'text-center not-c';
 		return this.state.showNotcompletedView ? classes += ' active' : classes;
 	},
 
 	getNotCompListClasses: function(){
-		var classes = 'col-sm-6 text-center is-c';
+		var classes = 'text-center is-c';
 		return !this.state.showNotcompletedView ? classes += ' active' : classes;
 	},
 
@@ -335,8 +335,8 @@ var List_Component = React.createClass({
 					</form>
 				</div>
 
-				<div className="container-fluid">
-					<div className="row nav-row">
+				<div className="">
+					<div className="nav-row clearfix">
 						<div className={compClasses} onClick={this.toggleCompletedView}>
 							<h4><a id="not-c-nav">Not completed</a> <span className="num">{this.state.unfinished_count}</span></h4>
 						</div>

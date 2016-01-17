@@ -100,6 +100,11 @@ body::-webkit-scrollbar-thumb{
 			margin-top: 15px;
 			margin-bottom: 15px;
 
+			div.text-center{
+				float: left;
+				width: 50%;
+			}
+
 			a{
 				color: $darkTextColor;
 				cursor: pointer;

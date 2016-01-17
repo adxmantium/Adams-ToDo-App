@@ -290,12 +290,12 @@ var List_Component = React.createClass({displayName: "List_Component",
 	},
 
 	getCompListClasses: function(){
-		var classes = 'col-sm-6 text-center not-c';
+		var classes = 'text-center not-c';
 		return this.state.showNotcompletedView ? classes += ' active' : classes;
 	},
 
 	getNotCompListClasses: function(){
-		var classes = 'col-sm-6 text-center is-c';
+		var classes = 'text-center is-c';
 		return !this.state.showNotcompletedView ? classes += ' active' : classes;
 	},
 
@@ -335,8 +335,8 @@ var List_Component = React.createClass({displayName: "List_Component",
 					)
 				), 
 
-				React.createElement("div", {className: "container-fluid"}, 
-					React.createElement("div", {className: "row nav-row"}, 
+				React.createElement("div", {className: ""}, 
+					React.createElement("div", {className: "nav-row clearfix"}, 
 						React.createElement("div", {className: compClasses, onClick: this.toggleCompletedView}, 
 							React.createElement("h4", null, React.createElement("a", {id: "not-c-nav"}, "Not completed"), " ", React.createElement("span", {className: "num"}, this.state.unfinished_count))
 						), 
