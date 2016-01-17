@@ -5840,8 +5840,8 @@ body::-webkit-scrollbar-thumb {
 #list-container {
   background-color: #eee; }
   #list-container .createList-container {
-    width: 354px;
-    margin: 0 auto 10px; }
+    /*width: 354px;
+		margin: 0 auto 10px;*/ }
     #list-container .createList-container form.intro-form {
       padding: 12px 0 20px; }
       #list-container .createList-container form.intro-form .input-group-addon {
