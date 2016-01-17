@@ -5859,8 +5859,8 @@ body::-webkit-scrollbar-thumb {
       border-bottom-right-radius: 2px;
       padding: 7px; }
   #list-container .list-component {
-    width: 354px;
-    margin: 0 auto 10px; }
+    /*width: 354px;
+		margin: 0 auto 10px;*/ }
     #list-container .list-component .list-header {
       width: 100%; }
       #list-container .list-component .list-header .finito-header, #list-container .list-component .list-header .logout {
