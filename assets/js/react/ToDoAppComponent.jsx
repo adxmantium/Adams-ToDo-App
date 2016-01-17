@@ -290,12 +290,12 @@ var List_Component = React.createClass({
 	},
 
 	getCompListClasses: function(){
-		var classes = 'col-xs-6 text-center not-c';
+		var classes = 'col-sm-6 text-center not-c';
 		return this.state.showNotcompletedView ? classes += ' active' : classes;
 	},
 
 	getNotCompListClasses: function(){
-		var classes = 'col-xs-6 text-center is-c';
+		var classes = 'col-sm-6 text-center is-c';
 		return !this.state.showNotcompletedView ? classes += ' active' : classes;
 	},
 
