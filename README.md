@@ -13,3 +13,5 @@ A user can create multiple lists and multiple tasks within those lists.
 
 ## Usage
 Just download this project, extract the files, and open the index.html file in your preferred browser.
+
+By: Adam Adams :)
