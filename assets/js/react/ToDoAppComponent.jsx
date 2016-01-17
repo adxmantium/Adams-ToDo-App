@@ -91,7 +91,7 @@ var ToDoAppComponent = React.createClass({
 		return (
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-xs-12">
+					<div className="col-sm-12 col-med-6 col-med-offset-3 col-lg-4 col-lg-offset-4">
 				{ 
 					this.state.showIntro ? 
 					<Intro_Component users={this.state.users} toggleViews_function={this.toggleViews} existingToActiveUser_function={this.existingToActiveUser} /> : 
