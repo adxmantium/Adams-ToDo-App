@@ -5842,8 +5842,10 @@ body::-webkit-scrollbar-thumb {
   #list-container .createList-container {
     /*width: 354px;
 		margin: 0 auto 10px;*/ }
+    #list-container .createList-container div.directions {
+      padding: 10px 0 0; }
     #list-container .createList-container form.intro-form {
-      padding: 12px 0 20px; }
+      padding: 2px 0 20px; }
       #list-container .createList-container form.intro-form .input-group-addon {
         padding: 0;
         border: 0;
@@ -5996,3 +5998,8 @@ body::-webkit-scrollbar-thumb {
 .by-adam-adams {
   margin-top: 100px;
   font-weight: 600; }
+
+@media (min-width: 768px) {
+  .createList-container, .list-component {
+    width: 354px;
+    margin: 0 auto 10px; } }

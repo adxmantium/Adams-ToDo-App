@@ -91,7 +91,7 @@ var ToDoAppComponent = React.createClass({
 		return (
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-sm-12 col-med-6 col-med-offset-3 col-lg-4 col-lg-offset-4">
+					<div className="col-sm-6 col-sm-offset-3 col-med-6 col-med-offset-3 col-lg-4 col-lg-offset-4">
 				{ 
 					this.state.showIntro ? 
 					<Intro_Component users={this.state.users} toggleViews_function={this.toggleViews} existingToActiveUser_function={this.existingToActiveUser} /> : 
@@ -122,7 +122,7 @@ var Intro_Component = React.createClass({
 			<div className="createList-container">
 				<div className="text-left">
 					<h2>Welcome, to Finito! <br /><small>Your Friendly To-Do App :)</small></h2>
-					<div>{directions}</div>
+					<div className="directions">{directions}</div>
 				</div>
 
 				<form className="intro-form text-left" onSubmit={this.props.toggleViews_function}>
@@ -338,10 +338,10 @@ var List_Component = React.createClass({
 				<div className="">
 					<div className="nav-row clearfix">
 						<div className={compClasses} onClick={this.toggleCompletedView}>
-							<h4><a id="not-c-nav">Not completed</a> <span className="num">{this.state.unfinished_count}</span></h4>
+							<h4><a id="not-c-nav">Incomplete</a> <span className="num">{this.state.unfinished_count}</span></h4>
 						</div>
 						<div className={notCompClasses} onClick={this.toggleCompletedView}>
-							<h4><a id="c-nav">Completed</a> <span className="num">{this.state.finished_count}</span></h4>
+							<h4><a id="c-nav">Complete</a> <span className="num">{this.state.finished_count}</span></h4>
 						</div>
 					</div>
 				</div>

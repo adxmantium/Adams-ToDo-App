@@ -45,9 +45,12 @@ body::-webkit-scrollbar-thumb{
 	.createList-container{
 		/*width: 354px;
 		margin: 0 auto 10px;*/
+		div.directions{
+			padding: 10px 0 0;
+		}
 
 		form.intro-form{
-			padding: 12px 0 20px;
+			padding: 2px 0 20px;
 			.input-group-addon{
 				padding: 0;
 				border: 0;
@@ -271,4 +274,9 @@ body::-webkit-scrollbar-thumb{
 	font-weight: 600;
 }
 
-
+@media (min-width: 768px){
+	.createList-container, .list-component{
+		width: 354px;
+		margin: 0 auto 10px;
+	}
+}

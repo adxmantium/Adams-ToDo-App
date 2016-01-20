@@ -91,7 +91,7 @@ var ToDoAppComponent = React.createClass({displayName: "ToDoAppComponent",
 		return (
 			React.createElement("div", {className: "container-fluid"}, 
 				React.createElement("div", {className: "row"}, 
-					React.createElement("div", {className: "col-sm-12 col-med-6 col-med-offset-3 col-lg-4 col-lg-offset-4"}, 
+					React.createElement("div", {className: "col-sm-6 col-sm-offset-3 col-med-6 col-med-offset-3 col-lg-4 col-lg-offset-4"}, 
 				 
 					this.state.showIntro ? 
 					React.createElement(Intro_Component, {users: this.state.users, toggleViews_function: this.toggleViews, existingToActiveUser_function: this.existingToActiveUser}) : 
@@ -122,7 +122,7 @@ var Intro_Component = React.createClass({displayName: "Intro_Component",
 			React.createElement("div", {className: "createList-container"}, 
 				React.createElement("div", {className: "text-left"}, 
 					React.createElement("h2", null, "Welcome, to Finito! ", React.createElement("br", null), React.createElement("small", null, "Your Friendly To-Do App :)")), 
-					React.createElement("div", null, directions)
+					React.createElement("div", {className: "directions"}, directions)
 				), 
 
 				React.createElement("form", {className: "intro-form text-left", onSubmit: this.props.toggleViews_function}, 
@@ -338,10 +338,10 @@ var List_Component = React.createClass({displayName: "List_Component",
 				React.createElement("div", {className: ""}, 
 					React.createElement("div", {className: "nav-row clearfix"}, 
 						React.createElement("div", {className: compClasses, onClick: this.toggleCompletedView}, 
-							React.createElement("h4", null, React.createElement("a", {id: "not-c-nav"}, "Not completed"), " ", React.createElement("span", {className: "num"}, this.state.unfinished_count))
+							React.createElement("h4", null, React.createElement("a", {id: "not-c-nav"}, "Incomplete"), " ", React.createElement("span", {className: "num"}, this.state.unfinished_count))
 						), 
 						React.createElement("div", {className: notCompClasses, onClick: this.toggleCompletedView}, 
-							React.createElement("h4", null, React.createElement("a", {id: "c-nav"}, "Completed"), " ", React.createElement("span", {className: "num"}, this.state.finished_count))
+							React.createElement("h4", null, React.createElement("a", {id: "c-nav"}, "Complete"), " ", React.createElement("span", {className: "num"}, this.state.finished_count))
 						)
 					)
 				), 
