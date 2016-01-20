@@ -5840,10 +5840,12 @@ body::-webkit-scrollbar-thumb {
 #list-container {
   background-color: #eee; }
   #list-container .createList-container {
-    width: 354px;
-    margin: 0 auto 10px; }
+    /*width: 354px;
+		margin: 0 auto 10px;*/ }
+    #list-container .createList-container div.directions {
+      padding: 10px 0 0; }
     #list-container .createList-container form.intro-form {
-      padding: 12px 0 20px; }
+      padding: 2px 0 20px; }
       #list-container .createList-container form.intro-form .input-group-addon {
         padding: 0;
         border: 0;
@@ -5859,11 +5861,11 @@ body::-webkit-scrollbar-thumb {
       border-bottom-right-radius: 2px;
       padding: 7px; }
   #list-container .list-component {
-    width: 354px;
-    margin: 0 auto 10px; }
+    /*width: 354px;
+		margin: 0 auto 10px;*/ }
     #list-container .list-component .list-header {
       width: 100%; }
-      #list-container .list-component .list-header .zenefits-header, #list-container .list-component .list-header .logout {
+      #list-container .list-component .list-header .finito-header, #list-container .list-component .list-header .logout {
         width: 50%;
         float: left; }
       #list-container .list-component .list-header .logout {
@@ -5878,6 +5880,9 @@ body::-webkit-scrollbar-thumb {
       border-bottom: 2px solid #333;
       margin-top: 15px;
       margin-bottom: 15px; }
+      #list-container .list-component .nav-row div.text-center {
+        float: left;
+        width: 50%; }
       #list-container .list-component .nav-row a {
         color: #333;
         cursor: pointer; }
@@ -5993,3 +5998,8 @@ body::-webkit-scrollbar-thumb {
 .by-adam-adams {
   margin-top: 100px;
   font-weight: 600; }
+
+@media (min-width: 768px) {
+  .createList-container, .list-component {
+    width: 354px;
+    margin: 0 auto 10px; } }

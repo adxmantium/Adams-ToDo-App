@@ -43,11 +43,14 @@ body::-webkit-scrollbar-thumb{
 	background-color: #eee;
 
 	.createList-container{
-		width: 354px;
-		margin: 0 auto 10px;
+		/*width: 354px;
+		margin: 0 auto 10px;*/
+		div.directions{
+			padding: 10px 0 0;
+		}
 
 		form.intro-form{
-			padding: 12px 0 20px;
+			padding: 2px 0 20px;
 			.input-group-addon{
 				padding: 0;
 				border: 0;
@@ -71,12 +74,12 @@ body::-webkit-scrollbar-thumb{
 	}
 
 	.list-component{
-		width: 354px;
-		margin: 0 auto 10px;
+		/*width: 354px;
+		margin: 0 auto 10px;*/
 
 		.list-header{
 			width: 100%;
-			.zenefits-header, .logout{
+			.finito-header, .logout{
 				width: 50%;
 				float: left;
 			}
@@ -99,6 +102,11 @@ body::-webkit-scrollbar-thumb{
 			border-bottom: 2px solid $darkTextColor;
 			margin-top: 15px;
 			margin-bottom: 15px;
+
+			div.text-center{
+				float: left;
+				width: 50%;
+			}
 
 			a{
 				color: $darkTextColor;
@@ -266,4 +274,9 @@ body::-webkit-scrollbar-thumb{
 	font-weight: 600;
 }
 
-
+@media (min-width: 768px){
+	.createList-container, .list-component{
+		width: 354px;
+		margin: 0 auto 10px;
+	}
+}
